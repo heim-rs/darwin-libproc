@@ -1,0 +1,10 @@
+[package]
+name = "darwin-libproc-sys"
+version = "0.0.1"
+authors = ["svartalf <self@svartalf.info>"]
+edition = "2018"
+links = "proc"
+build = "build.rs"
+
+[dependencies]
+libc = "^0.2"
