@@ -2,6 +2,7 @@ use std::ffi::OsString;
 use std::io;
 use std::os::unix::ffi::OsStringExt;
 
+/// Fetch process name for `pid` provided.
 pub fn name(pid: libc::pid_t) -> io::Result<OsString> {
     let mut buffer: Vec<u8> =
         Vec::with_capacity(darwin_libproc_sys::PROC_PIDPATHINFO_MAXSIZE);

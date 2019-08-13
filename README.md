@@ -8,6 +8,8 @@
 
 > Rust bindings for `libproc` of macOS
 
+Safe and idiomatic interface for `libproc` library.
+
 ## License
 
 Licensed under either of [Apache License 2.0](https://github.com/heim-rs/darwin-libproc/blob/master/LICENSE-APACHE)

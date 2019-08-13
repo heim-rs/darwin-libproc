@@ -3,6 +3,7 @@ use std::io;
 use std::os::unix::ffi::OsStringExt;
 use std::path::PathBuf;
 
+/// Fetch executable absolute path for process with `pid` provided.
 pub fn pid_path(pid: libc::pid_t) -> io::Result<PathBuf> {
     let mut buf: Vec<u8> =
         Vec::with_capacity(darwin_libproc_sys::PROC_PIDPATHINFO_MAXSIZE);

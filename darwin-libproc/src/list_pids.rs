@@ -33,26 +33,32 @@ fn list_pids(r#type: u32, typeinfo: u32) -> io::Result<Vec<libc::pid_t>> {
     Ok(buffer)
 }
 
+/// Fetch pids for all processes running in system.
 pub fn all_pids() -> io::Result<Vec<libc::pid_t>> {
     list_pids(darwin_libproc_sys::PROC_ALL_PIDS, 0)
 }
 
+/// Fetch pids for processes running in system in a given group.
 pub fn pgrp_only_pids(group: u32) -> io::Result<Vec<libc::pid_t>> {
     list_pids(darwin_libproc_sys::PROC_PGRP_ONLY, group)
 }
 
+/// Fetch pids for processes running in system attached to a given TTY.
 pub fn tty_only_pids(tty: u32) -> io::Result<Vec<libc::pid_t>> {
     list_pids(darwin_libproc_sys::PROC_TTY_ONLY, tty)
 }
 
+/// Fetch pids for processes running in system with the given UID.
 pub fn uid_only_pids(uid: u32) -> io::Result<Vec<libc::pid_t>> {
     list_pids(darwin_libproc_sys::PROC_UID_ONLY, uid)
 }
 
+/// Fetch pids for processes running in system with the given RUID.
 pub fn ruid_only_pids(ruid: u32) -> io::Result<Vec<libc::pid_t>> {
     list_pids(darwin_libproc_sys::PROC_RUID_ONLY, ruid)
 }
 
+/// Fetch pids for processes running in system with the given PPID.
 pub fn ppid_only_pids(ppid: u32) -> io::Result<Vec<libc::pid_t>> {
     list_pids(darwin_libproc_sys::PROC_PPID_ONLY, ppid)
 }

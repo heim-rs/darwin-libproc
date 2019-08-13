@@ -1,9 +1,12 @@
 //! Native `libproc` bindings for Rust.
 //!
 //! This crate provides the raw `libproc` API exposing kernel data about processes of macOS.
+//!
+//! See [darwin-libproc](https://crates.io/crates/darwin-libproc) crate
+//! for idiomatic and safe wrappers.
 
 #![cfg(target_os = "macos")]
-#![doc(html_root_url = "https://docs.rs/darwin-libproc-sys/0.0.1")]
+#![doc(html_root_url = "https://docs.rs/darwin-libproc-sys/0.1.0")]
 #![deny(
     unused,
     unused_imports,
