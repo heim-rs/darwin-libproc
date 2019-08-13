@@ -16,6 +16,15 @@
     unused_results
 )]
 
+mod list_pids;
+mod name;
+mod pid_path;
 mod version;
 
+pub use self::list_pids::{
+    all_pids, pgrp_only_pids, ppid_only_pids, ruid_only_pids, tty_only_pids,
+    uid_only_pids,
+};
+pub use self::name::name;
+pub use self::pid_path::pid_path;
 pub use self::version::version;
