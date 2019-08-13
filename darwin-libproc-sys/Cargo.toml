@@ -1,6 +1,6 @@
 [package]
 name = "darwin-libproc-sys"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 description = "FFI bindings for macOS libproc"

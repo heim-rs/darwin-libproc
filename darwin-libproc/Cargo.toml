@@ -1,6 +1,6 @@
 [package]
 name = "darwin-libproc"
-version = "0.0.1"
+version = "0.1.0"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 description = "Safe and idiomatic wrappers for macOS libproc"
@@ -14,5 +14,5 @@ license = "Apache-2.0 OR MIT"
 maintenance = { status = "experimental" }
 
 [dependencies]
-darwin-libproc-sys = { path = "../darwin-libproc-sys" }
+darwin-libproc-sys = { version = "0.1.0", path = "../darwin-libproc-sys" }
 libc = "^0.2"
