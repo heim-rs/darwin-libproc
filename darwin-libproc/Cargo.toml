@@ -3,6 +3,7 @@ name = "darwin-libproc"
 version = "0.1.0"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
+documentation = "https://docs.rs/darwin-libproc/*/x86_64-apple-darwin/darwin_libproc/"
 description = "Safe and idiomatic wrappers for macOS libproc"
 keywords = ["libproc", "proc", "darwin", "macos"]
 categories = ["os::macos-apis", "api-bindings"]
