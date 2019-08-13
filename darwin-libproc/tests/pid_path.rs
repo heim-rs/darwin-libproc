@@ -1,4 +1,8 @@
 #[test]
 fn test_pid_path() {
-    assert!(darwin_libproc::pid_path(1).is_ok());
+    let me = unsafe {
+        libc::getpid()
+    };
+
+    assert!(darwin_libproc::pid_path(me).is_ok());
 }
