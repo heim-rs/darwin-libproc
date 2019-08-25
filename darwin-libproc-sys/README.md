@@ -9,7 +9,8 @@
 
 > Low-level Rust bindings for `libproc` of macOS
 
-This crate provides unsafe low-level bindings for `libproc`.
+This crate provides unsafe low-level bindings for `libproc`,
+based on the [XNU 4903.221.2](https://opensource.apple.com/source/xnu/xnu-4903.221.2) sources.
 
 See [darwin-libproc](https://crates.io/crates/darwin-libproc) crate for idiomatic safe wrappers for these bindings.
 

@@ -20,6 +20,7 @@
 
 mod list_pids;
 mod name;
+mod pid_info;
 mod pid_path;
 mod version;
 
@@ -28,5 +29,6 @@ pub use self::list_pids::{
     uid_only_pids,
 };
 pub use self::name::name;
+pub use self::pid_info::{task_all_info, task_info};
 pub use self::pid_path::pid_path;
 pub use self::version::version;
