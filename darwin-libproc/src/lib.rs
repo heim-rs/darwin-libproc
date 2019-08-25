@@ -24,6 +24,12 @@ mod pid_info;
 mod pid_path;
 mod version;
 
+// Structs re-export
+pub use darwin_libproc_sys::{
+    proc_bsdinfo, proc_fdinfo, proc_taskallinfo, proc_taskinfo,
+};
+
+// Wrappers
 pub use self::list_pids::{
     all_pids, pgrp_only_pids, ppid_only_pids, ruid_only_pids, tty_only_pids,
     uid_only_pids,
