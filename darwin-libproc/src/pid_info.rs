@@ -42,3 +42,10 @@ pub fn task_all_info(
 ) -> io::Result<darwin_libproc_sys::proc_taskallinfo> {
     pid_info(pid, darwin_libproc_sys::PROC_PIDTASKALLINFO, 0)
 }
+
+/// Returns filled `proc_vnodepathinfo` struct for pid given.
+pub fn vnode_path_info(
+    pid: libc::pid_t,
+) -> io::Result<darwin_libproc_sys::proc_vnodepathinfo> {
+    pid_info(pid, darwin_libproc_sys::PROC_PIDVNODEPATHINFO, 0)
+}

@@ -17,3 +17,4 @@ maintenance = { status = "experimental" }
 [dependencies]
 darwin-libproc-sys = { version = "0.1.0", path = "../darwin-libproc-sys" }
 libc = "^0.2"
+memchr = "^2.2"

@@ -105,6 +105,76 @@ pub struct proc_fdinfo {
     pub proc_fdtype: u32,
 }
 
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct vinfo_stat {
+    /// \[XSI\] ID of device containing file
+    pub vst_dev: u32,
+    /// \[XSI\] Mode of file
+    pub vst_mode: u16,
+    /// \[XSI\] Number of hard links
+    pub vst_nlink: u16,
+    /// \[XSI\] File serial number
+    pub vst_ino: u64,
+    /// \[XSI\] User ID of the file
+    pub vst_uid: libc::uid_t,
+    /// \[XSI\] Group ID of the file
+    pub vst_gid: libc::gid_t,
+    /// \[XSI\] Time of last access
+    pub vst_atime: i64,
+    /// nsec of last access
+    pub vst_atimensec: i64,
+    /// \[XSI\] Last data modification time
+    pub vst_mtime: i64,
+    /// last data modification nsec
+    pub vst_mtimensec: i64,
+    /// \[XSI\] Time of last status change
+    pub vst_ctime: i64,
+    /// nsec of last status change
+    pub vst_ctimensec: i64,
+    /// File creation time(birth)
+    pub vst_birthtime: i64,
+    /// nsec of File creation time
+    pub vst_birthtimensec: i64,
+    /// \[XSI\] file size, in bytes
+    pub vst_size: libc::off_t,
+    /// \[XSI\] blocks allocated for file
+    pub vst_blocks: i64,
+    /// \[XSI\] optimal blocksize for I/O
+    pub vst_blksize: i32,
+    /// user defined flags for file
+    pub vst_flags: u32,
+    /// file generation number
+    pub vst_gen: u32,
+    /// \[XSI\] Device ID
+    pub vst_rdev: u32,
+    /// RESERVED: DO NOT USE!
+    pub vst_qspare: [i64; 2],
+}
+
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct vnode_info {
+    pub vi_stat: vinfo_stat,
+    pub vi_type: libc::c_int,
+    pub vi_fsid: libc::fsid_t,
+    pub vi_pad: libc::c_int,
+}
+
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct vnode_info_path {
+    pub vip_vi: vnode_info,
+    pub vip_path: [libc::c_char; crate::MAXPATHLEN],
+}
+
+#[repr(C)]
+#[derive(Copy, Clone)]
+pub struct proc_vnodepathinfo {
+    pub pvi_cdir: vnode_info_path,
+    pub pvi_rdir: vnode_info_path,
+}
+
 pub const PROC_PIDLISTFDS: libc::c_int = 2;
 pub const PROC_PIDLISTFD_SIZE: libc::c_int =
     mem::size_of::<proc_fdinfo>() as libc::c_int; // Should be 8
@@ -134,9 +204,11 @@ pub const PROC_PIDLISTTHREADS_SIZE: libc::c_int =
 //
 //#define PROC_PIDREGIONPATHINFO 8
 //#define PROC_PIDREGIONPATHINFO_SIZE  (sizeof(struct proc_regionwithpathinfo))
-//
-//#define PROC_PIDVNODEPATHINFO 9
-//#define PROC_PIDVNODEPATHINFO_SIZE  (sizeof(struct proc_vnodepathinfo))
+
+pub const PROC_PIDVNODEPATHINFO: libc::c_int = 9;
+pub const PROC_PIDVNODEPATHINFO_SIZE: libc::c_int =
+    mem::size_of::<proc_vnodepathinfo>() as libc::c_int;
+
 //
 //#define PROC_PIDTHREADPATHINFO 10
 //#define PROC_PIDTHREADPATHINFO_SIZE  (sizeof(struct proc_threadwithpathinfo))
