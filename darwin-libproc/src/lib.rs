@@ -1,7 +1,7 @@
 //! Idiomatic and safe wrappers for `libproc` of macOS.
 
 #![cfg(target_os = "macos")]
-#![doc(html_root_url = "https://docs.rs/darwin-libproc/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/darwin-libproc/0.1.1")]
 #![deny(
     unused,
     unused_imports,
