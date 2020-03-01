@@ -175,7 +175,9 @@ pub struct proc_vnodepathinfo {
     pub pvi_rdir: vnode_info_path,
 }
 
-pub const PROC_PIDLISTFDS: libc::c_int = 2;
+// Flavors for proc_pidinfo()
+
+pub const PROC_PIDLISTFDS: libc::c_int = 1;
 pub const PROC_PIDLISTFD_SIZE: libc::c_int =
     mem::size_of::<proc_fdinfo>() as libc::c_int; // Should be 8
 
@@ -183,7 +185,7 @@ pub const PROC_PIDTASKALLINFO: libc::c_int = 2;
 pub const PROC_PIDTASKALLINFO_SIZE: libc::c_int =
     mem::size_of::<proc_taskallinfo>() as libc::c_int; // Should be 232
 
-pub const PROC_PIDTBSDINFO: libc::c_int = 2;
+pub const PROC_PIDTBSDINFO: libc::c_int = 3;
 pub const PROC_PIDTBSDINFO_SIZE: libc::c_int =
     mem::size_of::<proc_bsdinfo>() as libc::c_int; // Should be 136
 

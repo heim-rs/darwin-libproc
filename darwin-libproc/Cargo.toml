@@ -1,6 +1,6 @@
 [package]
 name = "darwin-libproc"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 documentation = "https://docs.rs/darwin-libproc/*/x86_64-apple-darwin/darwin_libproc/"
@@ -15,6 +15,6 @@ license = "Apache-2.0 OR MIT"
 maintenance = { status = "experimental" }
 
 [dependencies]
-darwin-libproc-sys = { version = "0.1.0", path = "../darwin-libproc-sys" }
+darwin-libproc-sys = { version = "0.1", path = "../darwin-libproc-sys" }
 libc = "^0.2"
 memchr = "^2.2"
