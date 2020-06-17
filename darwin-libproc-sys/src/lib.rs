@@ -6,12 +6,11 @@
 //! for idiomatic and safe wrappers.
 
 #![cfg(target_os = "macos")]
-#![doc(html_root_url = "https://docs.rs/darwin-libproc-sys/0.1.0")]
+#![doc(html_root_url = "https://docs.rs/darwin-libproc-sys/0.2.0")]
 #![deny(
     unused,
     unused_imports,
     future_incompatible,
-    nonstandard_style,
     dead_code,
     deprecated,
     trivial_casts,
@@ -20,13 +19,15 @@
     unused_import_braces,
     unused_results
 )]
-#![allow(missing_docs)]
+#![allow(missing_docs, nonstandard_style)]
 
 mod listpids;
 mod pidinfo;
+mod rusage;
 
 pub use self::listpids::*;
 pub use self::pidinfo::*;
+pub use self::rusage::*;
 
 // Declared at `bsd/sys/param.h`
 pub const MAXPATHLEN: usize = libc::PATH_MAX as usize;

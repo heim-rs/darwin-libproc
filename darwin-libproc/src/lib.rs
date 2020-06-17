@@ -1,7 +1,7 @@
 //! Idiomatic and safe wrappers for `libproc` of macOS.
 
 #![cfg(target_os = "macos")]
-#![doc(html_root_url = "https://docs.rs/darwin-libproc/0.1.1")]
+#![doc(html_root_url = "https://docs.rs/darwin-libproc/0.2.0")]
 #![deny(
     unused,
     unused_imports,
@@ -23,6 +23,7 @@ mod name;
 mod pid_cwd;
 mod pid_info;
 mod pid_path;
+mod pid_rusage;
 mod version;
 
 // Structs re-export
@@ -39,4 +40,5 @@ pub use self::name::name;
 pub use self::pid_cwd::pid_cwd;
 pub use self::pid_info::{task_all_info, task_info, vnode_path_info};
 pub use self::pid_path::pid_path;
+pub use self::pid_rusage::*;
 pub use self::version::version;

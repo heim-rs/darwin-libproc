@@ -1,6 +1,6 @@
 [package]
 name = "darwin-libproc-sys"
-version = "0.1.2"
+version = "0.2.0"
 authors = ["svartalf <self@svartalf.info>"]
 edition = "2018"
 documentation = "https://docs.rs/darwin-libproc-sys/*/x86_64-apple-darwin/darwin_libproc_sys/"
@@ -17,4 +17,4 @@ build = "build.rs"
 maintenance = { status = "experimental" }
 
 [dependencies]
-libc = "^0.2"
+libc = "~0.2"
