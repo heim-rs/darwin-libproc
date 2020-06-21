@@ -1,7 +1,7 @@
 use std::io;
 use std::mem;
 
-fn pid_info<T>(
+pub(crate) fn pid_info<T>(
     pid: libc::pid_t,
     flavor: libc::c_int,
     arg: u64,
