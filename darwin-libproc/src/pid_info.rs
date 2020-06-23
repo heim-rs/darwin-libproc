@@ -1,6 +1,8 @@
 use std::io;
 use std::mem;
+use std::ptr;
 
+/// Return `T` value produced with `proc_pidinfo` function.
 pub(crate) fn pid_info<T>(
     pid: libc::pid_t,
     flavor: libc::c_int,
@@ -26,6 +28,39 @@ pub(crate) fn pid_info<T>(
             "invalid value returned",
         )),
         _ => unsafe { Ok(info.assume_init()) },
+    }
+}
+
+/// Return `Vec<T>` values produced with `proc_pidinfo` function.
+pub(crate) fn pid_info_list<T>(
+    pid: libc::pid_t,
+    flavor: libc::c_int,
+    arg: u64,
+) -> io::Result<Vec<T>> {
+    let size = unsafe {
+        darwin_libproc_sys::proc_pidinfo(pid, flavor, arg, ptr::null_mut(), 0)
+    };
+    if size <= 0 {
+        return Err(io::Error::last_os_error());
+    }
+
+    let mut entries = Vec::with_capacity(size as usize);
+    let result = unsafe {
+        darwin_libproc_sys::proc_pidinfo(
+            pid,
+            flavor,
+            arg,
+            entries.as_mut_ptr() as *mut _,
+            size,
+        )
+    };
+    if result <= 0 {
+        Err(io::Error::last_os_error())
+    } else {
+        unsafe {
+            entries.set_len(size as usize);
+        }
+        Ok(entries)
     }
 }
 
