@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 fn main() {
     match env::var("CARGO_CFG_TARGET_OS") {
-        Ok(os) if os == "macos" => {}
+        Ok(ref os) if os == "macos" => {}
         Ok(other) => panic!(
             "darwin_libproc_sys crate can't be compiled for {} target",
             other
