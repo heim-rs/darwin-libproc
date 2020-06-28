@@ -1,1 +1,1 @@
-#include <bsd/sys/proc_info.h>
+#include <sys/proc_info.h>
