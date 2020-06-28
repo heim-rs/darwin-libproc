@@ -33,19 +33,27 @@ fn pid_info<T>(
 pub fn task_info(
     pid: libc::pid_t,
 ) -> io::Result<darwin_libproc_sys::proc_taskinfo> {
-    pid_info(pid, darwin_libproc_sys::PROC_PIDTASKINFO, 0)
+    pid_info(pid, darwin_libproc_sys::PROC_PIDTASKINFO as libc::c_int, 0)
 }
 
 /// Returns filled `proc_taskallinfo` struct for `pid` given.
 pub fn task_all_info(
     pid: libc::pid_t,
 ) -> io::Result<darwin_libproc_sys::proc_taskallinfo> {
-    pid_info(pid, darwin_libproc_sys::PROC_PIDTASKALLINFO, 0)
+    pid_info(
+        pid,
+        darwin_libproc_sys::PROC_PIDTASKALLINFO as libc::c_int,
+        0,
+    )
 }
 
 /// Returns filled `proc_vnodepathinfo` struct for pid given.
 pub fn vnode_path_info(
     pid: libc::pid_t,
 ) -> io::Result<darwin_libproc_sys::proc_vnodepathinfo> {
-    pid_info(pid, darwin_libproc_sys::PROC_PIDVNODEPATHINFO, 0)
+    pid_info(
+        pid,
+        darwin_libproc_sys::PROC_PIDVNODEPATHINFO as libc::c_int,
+        0,
+    )
 }
