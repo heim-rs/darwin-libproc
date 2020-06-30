@@ -15,6 +15,3 @@ build = "build.rs"
 
 [badges]
 maintenance = { status = "experimental" }
-
-[dependencies]
-libc = "~0.2"

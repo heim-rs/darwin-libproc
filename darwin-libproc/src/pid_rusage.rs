@@ -2,8 +2,8 @@ use std::io;
 use std::mem;
 
 pub use darwin_libproc_sys::{
-    rusage_info_v0, rusage_info_v1, rusage_info_v2, rusage_info_v3,
-    rusage_info_v4,
+    rusage_info_t, rusage_info_v0, rusage_info_v1, rusage_info_v2,
+    rusage_info_v3, rusage_info_v4,
 };
 
 mod private {
@@ -21,35 +21,35 @@ mod private {
 /// and used by [`pid_rusage`]
 pub trait RusageFlavor: private::Sealed {
     #[doc(hidden)]
-    fn flavor() -> libc::c_int;
+    fn flavor() -> u32;
 }
 
 impl RusageFlavor for rusage_info_v0 {
-    fn flavor() -> libc::c_int {
+    fn flavor() -> u32 {
         darwin_libproc_sys::RUSAGE_INFO_V0
     }
 }
 
 impl RusageFlavor for rusage_info_v1 {
-    fn flavor() -> libc::c_int {
+    fn flavor() -> u32 {
         darwin_libproc_sys::RUSAGE_INFO_V1
     }
 }
 
 impl RusageFlavor for rusage_info_v2 {
-    fn flavor() -> libc::c_int {
+    fn flavor() -> u32 {
         darwin_libproc_sys::RUSAGE_INFO_V2
     }
 }
 
 impl RusageFlavor for rusage_info_v3 {
-    fn flavor() -> libc::c_int {
+    fn flavor() -> u32 {
         darwin_libproc_sys::RUSAGE_INFO_V3
     }
 }
 
 impl RusageFlavor for rusage_info_v4 {
-    fn flavor() -> libc::c_int {
+    fn flavor() -> u32 {
         darwin_libproc_sys::RUSAGE_INFO_V4
     }
 }
@@ -60,7 +60,7 @@ pub fn pid_rusage<T: RusageFlavor>(pid: libc::pid_t) -> io::Result<T> {
     let result = unsafe {
         darwin_libproc_sys::proc_pid_rusage(
             pid,
-            T::flavor(),
+            T::flavor() as i32,
             rusage.as_mut_ptr() as *mut _,
         )
     };

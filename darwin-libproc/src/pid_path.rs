@@ -5,8 +5,9 @@ use std::path::PathBuf;
 
 /// Fetch executable absolute path for process with `pid` provided.
 pub fn pid_path(pid: libc::pid_t) -> io::Result<PathBuf> {
-    let mut buf: Vec<u8> =
-        Vec::with_capacity(darwin_libproc_sys::PROC_PIDPATHINFO_MAXSIZE);
+    let mut buf: Vec<u8> = Vec::with_capacity(
+        darwin_libproc_sys::PROC_PIDPATHINFO_MAXSIZE as usize,
+    );
 
     let result = unsafe {
         darwin_libproc_sys::proc_pidpath(
