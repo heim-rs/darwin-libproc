@@ -17,6 +17,7 @@ fn main() {
         .expect("unable to generate libproc bindings");
 
     let out = PathBuf::from(env::var("OUT_DIR").unwrap());
-    bindings.write_to_file(out.join("bindings.rs"))
-            .expect("unable to write bindings")
+    bindings
+        .write_to_file(out.join("bindings.rs"))
+        .expect("unable to write bindings")
 }
