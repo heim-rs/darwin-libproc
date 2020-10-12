@@ -15,3 +15,6 @@ build = "build.rs"
 
 [badges]
 maintenance = { status = "experimental" }
+
+[build-dependencies]
+bindgen = "*"
