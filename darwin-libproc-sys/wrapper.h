@@ -1,6 +1,6 @@
 /**
  * This file is used in combination with `bindgen` tool,
- * see `build.sh` file for details.
+ * see `build.rs` file for details.
  */
 
 #define __APPLE__ 1
